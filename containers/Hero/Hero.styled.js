@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const StyledHero = styled.div`
   margin-top: -248px ;
   height: 100vh;
-  background: url('images/Block.svg') center center/cover no-repeat; 
+  background: url('https://i.pinimg.com/originals/14/e4/d7/14e4d78415a2a29e093af61e31326496.jpg') center center/cover no-repeat; 
   color: white;
 `;
 

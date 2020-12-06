@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const MovieInfoWraper = styled.div `
-  height: 300px;
   margin: 130px 100px 0;
   display: flex;
 `;

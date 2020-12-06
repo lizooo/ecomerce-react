@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Wrapper = styled.div`
-  margin: 0 140px 100px;
+  margin: 0 140px -80px;
   height: 420px;
   display: flex;
   

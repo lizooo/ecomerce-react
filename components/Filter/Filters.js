@@ -1,80 +1,82 @@
-import {React, useContext, useState, useEffect} from 'react'
-import FiltersWrapper from './Filters.styled'
-import Search from './Search'
-import ButtonSmall from '../Button/ButtonSmall'
-import {MoviesContext} from "../Contexts/Context"
+import { React, useContext, useState, useEffect } from "react";
+import FiltersWrapper from "./Filters.styled";
+import Search from "./Search";
+import ButtonSmall from "../Button/ButtonSmall";
+import { MoviesContext } from "../Contexts/Context";
 import CardItem from "../Card/CardItem";
 import { StyledCards, CardsContainer } from "../Card/CardItem.styled";
-import StyledCategory from './Category.styled'
-import Price from './Price'
-import Select from 'react-select'
-import {Link} from 'react-router-dom'
-
+import StyledCategory from "./Category.styled";
+import Price from "./Price";
+import Select from "react-select";
 
 const Filters = () => {
-
+  
   const options = [
-    { value: 'movie', label: 'Movies' },
-    { value: 'series', label: 'Series' },
-    { value: 'all', label: 'All'}
-  ]
+    { value: "movie", label: "Movies" },
+    { value: "series", label: "Series" },
+    { value: "all", label: "All" },
+  ];
 
-  const {allMovies} = useContext(MoviesContext);
-  const [items, setItems] = useState(allMovies);
+  const  {allMovies}  = useContext(MoviesContext);
+  const [movies, setMovies] = useState(allMovies);
+  let filteredMovies;
 
   const [toSearch, setToSearch] = useState("");
   const [selectOption, setSelectOption] = useState([]);
-  const [priceRange, setPriceRange] = useState([0, Infinity]);
+  const [priceRange, setPriceRange] = useState([0, 100000]);
 
 
-  const handleRange = (event, value) => {
+  const onRangeChange = (event, value) => {
     setPriceRange(value);
   };
 
-  const handleSearch = (event) => {
+  const onSearch = (event) => {
     setToSearch(event.target.value);
   };
 
-  const handleSelect = (value) => {
-    setSelectOption(value.value);
+  const onCancel = () => {
+    setToSearch("");
+  };
 
+  const onSelectChange = (value) => {
+    setSelectOption(value.value);
   };
 
   useEffect(() => {
-    let newItems;
-    
-    newItems = allMovies.filter((item) => 
+
+    filteredMovies = allMovies.filter((item) => 
     item.name.includes(toSearch)
     );
 
-    newItems = newItems.filter((item) => 
+    filteredMovies = filteredMovies.filter((item) => 
     item.price >= priceRange[0] && item.price <= priceRange[1]
     );
 
-    newItems = newItems.filter(
+    filteredMovies = filteredMovies.filter(
       (item) => item.category === selectOption | selectOption === 'all'
     ) ;
 
-    setItems(newItems);
-  },[ toSearch, priceRange, selectOption]);
+    setMovies(filteredMovies);
+  }, [toSearch, priceRange, selectOption]);
 
   return (
     <div>
       <FiltersWrapper>
-        <Search value={toSearch} onChange={handleSearch}/>
-        <Price value = {priceRange} onChange = {handleRange}></Price> 
-        < StyledCategory>
-          <label>Search:</label><br></br>
-          <Select options={options} onChange = {handleSelect} />
+        <Price value={priceRange} onChange={onRangeChange}></Price>
+        <StyledCategory>
+          <label>Search:</label>
+          <br></br>
+          <Select options={options} onChange={onSelectChange} />
         </StyledCategory>
-        <ButtonSmall ActionCall='Apply'></ButtonSmall>
+        <Search value={toSearch} onChange={onSearch} />
+        <ButtonSmall ActionCall="Cancel" onclickFunc={onCancel}></ButtonSmall>
       </FiltersWrapper>
-          <div>
-          <StyledCards>
-            <CardsContainer>
-              {items.map(({ src, description, name, price }, key) => (
+      <div>
+        <StyledCards>
+        <CardsContainer>
+              {movies.map(({ src, description, name, price, key}) => (
             <CardItem
-              key={`card-${name}`}
+              key={name}
               src={src}
               description={description}
               name={name}
@@ -82,11 +84,10 @@ const Filters = () => {
             />
           ))}
             </CardsContainer>
-          </StyledCards>
+        </StyledCards>
       </div>
     </div>
-    
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;

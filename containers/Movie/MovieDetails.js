@@ -4,6 +4,7 @@ import {MoviesContext} from '../../components/Contexts/Context'
 import {Wrapper, MovieImg, MovieDescription, Divider} from './MovieDetails.styled'
 import ButtonSmall from '../../components/Button/ButtonSmall'
 import {InlineButtonsWrapper} from '../../components/Button/Button.styled'
+import {Link} from "react-router-dom"
 
 
 const MovieDetails = () => {
@@ -26,7 +27,7 @@ const MovieDetails = () => {
         <h3>{currentMovie.description}</h3>
         <InlineButtonsWrapper>
         <ButtonSmall ActionCall = "Add to cart"></ButtonSmall>
-        <ButtonSmall ActionCall = "Go Back"></ButtonSmall>
+        <Link to="/catalog"><ButtonSmall ActionCall = "Go Back"></ButtonSmall></Link>
         </InlineButtonsWrapper>
       </MovieDescription>
       </Wrapper>

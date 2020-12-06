@@ -4,6 +4,13 @@ export const StyledCardItem = styled.div`
   color: white;
   width: 32%;
   margin-bottom: 35px;
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  a:hover{
+    color: grey;
+  }
   h2{
     text-align: center;
     font-size: 18px;

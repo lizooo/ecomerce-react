@@ -3,6 +3,7 @@ import Button from '../../components/Button/Button'
 import '../../components/Button/Button'
 import { HeroWrapper, StyledHero } from './Hero.styled'
 
+
 function Hero(){
   return(
   <StyledHero>
@@ -15,6 +16,5 @@ function Hero(){
     </HeroWrapper>
   </StyledHero>
   );
-}
-
+  }
 export default Hero;
