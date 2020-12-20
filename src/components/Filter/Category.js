@@ -1,18 +1,13 @@
 import React from 'react'
-import {StyledSelect} from './Category.styled'
+import Select from 'react-select'
 
-const Category = () => {
+
+
+const Category = ( options, onChange) => {
   return (
-    <div>
-      <StyledSelect>
-      <label>Category:</label><br></br>
-      <select>
-        <option>Movie</option>
-        <option>Series</option>
-      </select>
-      </StyledSelect>
-    </div>
+    <Select options={options} onChange = {onChange}/>
   )
 };
 
 export default Category;
+

@@ -19,4 +19,9 @@ export const StyledButton = styled.div`
   }
 `;
 
+export const InlineButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export default StyledButton;

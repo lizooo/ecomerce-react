@@ -10,6 +10,7 @@ export const StyledButtonSmall = styled.div`
   display: flex;
   align-items: center;
   justify-content:center;
+  z-index: 100;
   h5{
     font-weight: 400;
     color: white;

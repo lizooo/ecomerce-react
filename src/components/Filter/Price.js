@@ -1,14 +1,25 @@
-import React from 'react'
-import {StyledPrice} from './Price.styled' 
+import {React} from 'react'
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
 
-const Price = () => {
+
+
+
+const Price = ({value, onChange}) => {
+
   return (
     <div>
-      <StyledPrice>
-      <label>Price:</label><br></br>
-    <span><input type="number" name="price" placeholder="from.."></input></span>
-    <span><input type="number" name="price" placeholder="to.."></input></span>
-      </StyledPrice>
+      <Typography id="range-slider" gutterBottom color="textPrimary">
+            Price range
+          </Typography>
+          <Slider
+            value={value}
+            onChange={onChange}
+            valueLabelDisplay="auto"
+            min={0}
+            max={32}
+            step={2}
+          />
     </div>
   )
 }
