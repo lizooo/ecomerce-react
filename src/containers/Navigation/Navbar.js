@@ -13,6 +13,7 @@ import Home from "../Home/Home"
 import { MoviesContext } from "../../components/Contexts/Context";
 import { movies } from "../../components/Card/Cards";
 import Cart from "../App/Cart/Cart"
+import Checkout from "../Checkout/Checkout"
 
 function Navigation() {
   const [loading, setLoading] = useState(false);
@@ -47,6 +48,9 @@ function Navigation() {
               </Route>
               <Route path="/cart">
               <Cart/>
+              </Route>
+              <Route path="/checkout" >
+                <Checkout></Checkout>
               </Route>
               <Route path="/">
                 <Home/>

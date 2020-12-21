@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { remove, increment, decrement } from '../../../store/actions';
 import { useSelector } from 'react-redux';
+import Button from "../../../components/Button/Button"
 
 export default function ShopPage() {
 
@@ -11,7 +12,7 @@ export default function ShopPage() {
     const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
-      console.log(items)
+    console.log(items)
         setTotalPrice(items.reduce((counter, item) =>
             (counter + item.price * item.counter), 0))
     }, [items])
@@ -38,6 +39,12 @@ export default function ShopPage() {
                 </Link>
                 <NavButton>Continue</NavButton>
             </NavButtonsContainer> */}
+            
+            <Link to='/checkout'>
+            <Button ActionCall="Checkout"></Button>
+            </Link>
+                
+            
         </div>
     );
 } 

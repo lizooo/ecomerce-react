@@ -9,8 +9,8 @@ const Price = ({value, onChange}) => {
 
   return (
     <div>
-      <Typography id="range-slider" gutterBottom color="textPrimary">
-            Price range
+      <Typography id="range-slider" gutterBottom color="white">
+            Price range:     
           </Typography>
           <Slider
             value={value}

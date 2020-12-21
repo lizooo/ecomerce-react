@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledPrice = styled.div`
+  color:white;
   width: 270px;
   input[type=number], select {
   width: 40%;
